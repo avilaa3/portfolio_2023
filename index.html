@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/main.css">
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Crypto Portolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="./styles/main.css"/>
 </head>
 <body>
     <header class="header">
-            <img src="./imgs/logo.svg" 
-            alt=""
+        <div class="container header__container">
+            <img
+            src="./imgs/logo.svg" 
+            alt="Logo for the company, it is a circle split diagonal with section and a line with a dot in the end"
             width= 145;
             height= 35;
             />
@@ -23,12 +30,13 @@
                     <li ><a href="#">Events</a></li>
                 </ul>
             </nav>
-        <div class="header__actions">
-            <form class="header__search" action="">
-                <img src="./imgs/Search_ikon.svg" alt="Magnify glass icon for search" width="24" height="24"/>
-                <input type="search" aria-label="search" placeholder="Search here..."/>
-            </form>
-            <a href="/login" class="btn">Log in</a>
+            <div class="header__actions">
+                <form class="header__search" action="">
+                    <img src="./imgs/Search_ikon.svg" alt="Magnify glass icon for search" width="24" height="24"/>
+                    <input type="search" aria-label="search" placeholder="Search here..."/>
+                </form>
+                <a href="/login" class="btn">Log in</a>
+            </div>
         </div>
     </header>
     <main>
