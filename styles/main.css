@@ -93,11 +93,14 @@
 
   .container{
     width: var(--full-width);
-    margin: 0 auto;
+    margin: auto;
+  }
+
+  .prime{
+    background: linear-gradient(311.76deg, #D4E7FE -15.24%, #FFFFFF 78.85%);
   }
 
   .header{
-    width: var(--full-width);
     border-bottom: solid 1px var(--color-primary-10);
     padding: 1.5rem 0;
   }
@@ -139,6 +142,10 @@
     width: 7.5rem;
   }
 
-
+  .hero{
+    display: flex;
+    align-items: center;
+    padding: 5rem 0;
+  }
 
 

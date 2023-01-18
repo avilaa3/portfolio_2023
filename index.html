@@ -13,36 +13,49 @@
     <link rel="stylesheet" href="./styles/main.css"/>
 </head>
 <body>
-    <header class="header">
-        <div class="container header__container">
-            <img
-            src="./imgs/logo.svg" 
-            alt="Logo for the company, it is a circle split diagonal with section and a line with a dot in the end"
-            width= 145;
-            height= 35;
-            />
+    <div class="prime">
+        <header class="header">
+            <div class="container header__container">
+                <img
+                src="./imgs/logo.svg" 
+                alt="Logo for the company, it is a circle split diagonal with section and a line with a dot in the end"
+                width= 145;
+                height= 35;
+                />
 
-            <nav class="header__nav">
-                <ul>
-                    <li ><a href="#" class="active">Home</a></li>
-                    <li ><a href="#">Community</a></li>
-                    <li ><a href="#">Blog</a></li>
-                    <li ><a href="#">Events</a></li>
-                </ul>
-            </nav>
-            <div class="header__actions">
-                <form class="header__search" action="">
-                    <img src="./imgs/Search_ikon.svg" alt="Magnify glass icon for search" width="24" height="24"/>
-                    <input type="search" aria-label="search" placeholder="Search here..."/>
-                </form>
-                <a href="/login" class="btn">Log in</a>
+                <nav class="header__nav">
+                    <ul>
+                        <li ><a href="#" class="active">Home</a></li>
+                        <li ><a href="#">Community</a></li>
+                        <li ><a href="#">Blog</a></li>
+                        <li ><a href="#">Events</a></li>
+                    </ul>
+                </nav>
+                <div class="header__actions">
+                    <form class="header__search" action="">
+                        <img src="./imgs/Search_ikon.svg" alt="Magnify glass icon for search" width="24" height="24"/>
+                        <input type="search" aria-label="search" placeholder="Search here..."/>
+                    </form>
+                    <a href="/login" class="btn">Log in</a>
+                </div>
             </div>
-        </div>
-    </header>
-    <main>
-        <section class="hero">
-            <p>Hello World</p>
+        </header>
+        <section class="hero container">
+            <div class="hero__content">
+            <h2>Netbook community</h2>
+            <h3>Your Solutions For Community!</h3>
+            <p>More than 2 billion people in over countries use socibook to stay in touch with friends & family.</p>
+            <p>
+                <a href="#" class="btn">About More</a>
+                <a href="#" class="btn">Invite Friend</a>
+            </p>
+            </div>
+            <div class="hero__img">
+            <img src="./imgs/Hero_Image.svg" alt="Image with tree persons shaing hands"/>
+            </div>
         </section>
+    </div>
+    <main>
         <section class="clients"></section>
         <section class="whats-netboks"></section>
         <section class="community"></section>
