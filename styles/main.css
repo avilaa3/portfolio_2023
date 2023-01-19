@@ -58,7 +58,7 @@
     --color-secundary: #FFAF2E;
     --color-heading: #0A093D;
     --color-white: #FFF;
-    --full-width: 1440px;
+    --full-width: 1170px;
     --color-text: #656464;
 
     --space-1: 1rem;
@@ -89,6 +89,17 @@
     line-height: 1;
     align-items: center;
     border-radius: 1rem;
+  }
+
+  .btn--secondary{
+    background-color: transparent;
+    border: solid 1px var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .btn--large{
+    height: 62px;
+    padding: 0 48px;
   }
 
   .container{
@@ -148,4 +159,35 @@
     padding: 5rem 0;
   }
 
+  .hero__title{
+    font-size: 12px;
+    background-color: var(--color-primary-10);
+    border-radius: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-primary);
+    padding: 0 2rem;
+    height: 2rem;
+  }
+
+  .hero__subtitle{
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin: 1.5rem 0;
+    width: 32.1875rem;
+    height: 8.25rem;
+  }
+
+  .hero__description{
+    font-size: 1.125rem;
+    margin-bottom: 3rem;
+    width: 30.6875rem;
+    height: 3.5rem;
+
+  }
+
+  .hero__cta{
+    display: flex;
+    gap: 1rem;
+  }
 
