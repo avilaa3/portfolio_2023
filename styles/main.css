@@ -191,3 +191,50 @@
     gap: 1rem;
   }
 
+  .whats-netbook{
+    display: flex;
+    align-items: center;
+    gap: 12.5rem;
+  }
+
+  .whats-netbook__text{
+    max-width: 25.375rem;
+  }
+
+  .whats-netbook h2{
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1rem;
+    color: var(--color-primary);
+  }
+
+  .whats-netbook h3{
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.33;
+    margin-bottom: 1rem;
+  }
+
+  .whats-netbook p{
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-text);
+  }
+
+  .whats-netbook__images{
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+  }
+
+  .whats-netbook__images img{
+    border-radius: 1rem;
+  }
+
+  .whats-netbook__video{
+    grid-row: 1 / -1;
+
+  }
+
