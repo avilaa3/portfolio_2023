@@ -361,6 +361,14 @@
 
   .community{
     background: linear-gradient(0deg, rgba(241, 246, 253, 0) 1.63%, #F1F6FD 20.5%, #F1F6FD 58.57%, #FFFFFF 100%);
+    margin-top: 11.6875rem;
+    margin-bottom: 10.8125rem;
+  }
+
+  .community__content{
+    text-align: center;
+    width: 27.56rem;
+    margin: 0 auto 4rem;
   }
 
   .community__items{
@@ -423,3 +431,10 @@
     width: 315px;
     height: 52px;
   }
+
+  .members__content{
+    text-align: center;
+    width: 28.375rem;
+    margin: 0 auto 4rem;
+  }
+
