@@ -536,6 +536,7 @@
 
   .app{
     background-color: #E5F0FD;
+    overflow: hidden;
   }
 
   .app .container{
@@ -545,8 +546,53 @@
     align-items: center;
   }
 
-  .app__content-phone img{
+  .app__screenshot{
+    position: relative;
+    align-self: end;
+    width: 341px;
+    margin-left: auto;
+  }
+
+  .app__screenshot .app__screenshot-picture{
     filter: drop-shadow(0px 80px 250px rgba(0, 0, 0, 0.2));
+    position: relative;
+    z-index: 1;
+  }
+
+  .app__screenshot-shine{
+    position: absolute;
+    margin-left: 310px;
+    top: -54px;
+  }
+
+  .app__content-circle-1, .app__content-circle-2{
+    width: 145px;
+    height: 145px;
+    border-radius: 50%;
+    left: -4.5rem;
+    position: absolute;
+  }
+
+  .app__content-circle-1{
+    background-color: #FC6A65;
+    bottom: 72px;
+  }
+
+  .app__content-circle-2{
+    background-color: #489D92;
+    bottom: -72px;
+  }
+
+  .app__buttons{
+    display: flex;
+    gap: 20px;
+    margin-top: 36px;
+  }
+
+  .app__buttons img {
+    border-radius: 0.5rem;
+    background: url(.png);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   }
 
  
