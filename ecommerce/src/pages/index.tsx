@@ -1,6 +1,12 @@
-import Head from 'next/head'
 import { GetServerSidePropsContext } from 'next';
-import { Button } from '@chakra-ui/react'
+import Head from 'next/head'
+import Image from 'next/image'
+
+import { Box, Grid, GridItem } from '@chakra-ui/react'
+import { Header } from '@/components/Headers';
+import { TopBar } from '@/components/Topbar';
+import { slugify } from '../utils/sluglyfile';
+
 
 type Product = {
   id: number,
@@ -15,13 +21,28 @@ type Product = {
   };
 }
 
+type Categories = "electronics" | "jewerly" | "men's clothing" | "women's clothing"
+
 type Props = {
-  products: Product[] 
+  products: Product[],
+  categories: Categories[]
 }
+
+import * as React from 'react';
+
+interface ICategoryLabelProps {
+  label: string;
+}
+
+const CategoryLabel: React.FunctionComponent<ICategoryLabelProps> = ({label}) => {
+  return <Box bgColor="white" padding="1.5rem 3rem" position="relative" width="fit-content" zIndex="1" textTransform="uppercase" fontWeight="bold" borderRadius="0.25rem">{label}</Box>
+};
+
+
+
 // this is executhe in the client side
-export default function Home({products}) {
-  console.log(products);
-  
+export default function Home({ products, categories }: Props) {
+
   return (
     <>
       <Head>
@@ -31,14 +52,31 @@ export default function Home({products}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main >
-        <Button>Button</Button>
-        <ol>
-        {products.map(product => {
-          return <strong>
-            <li key={product.id}>{product.title}</li>
-            </strong>
+        <TopBar />
+        <Header />
+
+        <Grid templateColumns="540px 255px 255px" gap= "1rem" templateRows="200px 260px">
+        {categories.map((cat, key)=> {
+          const slug = slugify(cat);
+          const imageUrl = `/pic-categories-${slug}.jpg`
+
+
+          if (key == 0) {
+            return <GridItem display="flex" alignItems="center" justifyContent="center" position="relative" rowSpan={2} w='100%' h='100%' bg='red.500' key={key}><Image src={imageUrl} fill={true} alt= {cat}/><CategoryLabel label={cat}/></GridItem>
+          }
+
+          if (key == categories.length - 1) {
+            return <GridItem display="flex" alignItems="center" justifyContent="center" position="relative" colSpan={2} w='100%' h='100%' bg='yellow.500' key={key}><Image src={imageUrl} fill={true} alt= {cat}/><CategoryLabel label={cat}/></GridItem>
+          }
+          return <GridItem display="flex" alignItems="center" justifyContent="center" position="relative" w='100%' h='100%' bg='blue.500' key={key}><Image src={imageUrl} fill={true} alt= {cat} /><CategoryLabel label={cat}/></GridItem>
         })}
-        </ol>
+        </Grid>
+
+        {/* <ol>
+        {products.map(product => {
+          return <li key={product.id}>{product.title}</li>
+        })}
+        </ol> */}
       </main>
     </>
   )
@@ -47,10 +85,14 @@ export default function Home({products}) {
 export async function getServerSideProps(contex: GetServerSidePropsContext){
   const products = await fetch('https://fakestoreapi.com/products')
     .then(res=>res.json())
+  
+  const categories = await fetch('https://fakestoreapi.com/products/categories')
+    .then(res=>res.json())
             
   return{
     props: {
-      products
+      products,
+      categories
     }
   }
 }
