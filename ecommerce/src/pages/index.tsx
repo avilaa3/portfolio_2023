@@ -1,48 +1,40 @@
-import { GetServerSidePropsContext } from 'next';
-import Head from 'next/head'
-import Image from 'next/image'
+//Next Js
+import { GetServerSidePropsContext } from "next";
+import Head from "next/head";
+import Image from "next/image";
+//Chakra
 
-import { Box, Grid, GridItem } from '@chakra-ui/react'
-import { Header } from '@/components/Headers';
-import { TopBar } from '@/components/Topbar';
-import { slugify } from '../utils/sluglyfile';
+//Components
+import { Header } from "@/components/Headers";
+import { TopBar } from "@/components/Topbar";
+
+import { HomeHeroCategories } from "@/components/HomeHeroCategories";
+import { Categories } from "@/models/Categories";
+//Utilities
+
 
 
 type Product = {
-  id: number,
-  title: string,
-  price: number,
-  description: string,
-  category: string,
-  image: string,
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
   rating: {
-  rate: number,
-  count: number
+    rate: number;
+    count: number;
   };
-}
-
-type Categories = "electronics" | "jewerly" | "men's clothing" | "women's clothing"
-
-type Props = {
-  products: Product[],
-  categories: Categories[]
-}
-
-import * as React from 'react';
-
-interface ICategoryLabelProps {
-  label: string;
-}
-
-const CategoryLabel: React.FunctionComponent<ICategoryLabelProps> = ({label}) => {
-  return <Box bgColor="white" padding="1.5rem 3rem" position="relative" width="fit-content" zIndex="1" textTransform="uppercase" fontWeight="bold" borderRadius="0.25rem">{label}</Box>
 };
 
-
+type Props = {
+  products: Product[];
+  categories: Categories[];
+};
 
 // this is executhe in the client side
-export default function Home({ products, categories }: Props) {
 
+export default function Home({ products, categories }: Props) {
   return (
     <>
       <Head>
@@ -51,48 +43,30 @@ export default function Home({ products, categories }: Props) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main >
+      <main>
         <TopBar />
         <Header />
 
-        <Grid templateColumns="540px 255px 255px" gap= "1rem" templateRows="200px 260px">
-        {categories.map((cat, key)=> {
-          const slug = slugify(cat);
-          const imageUrl = `/pic-categories-${slug}.jpg`
+        <HomeHeroCategories categories={categories}></HomeHeroCategories>
 
-
-          if (key == 0) {
-            return <GridItem display="flex" alignItems="center" justifyContent="center" position="relative" rowSpan={2} w='100%' h='100%' bg='red.500' key={key}><Image src={imageUrl} fill={true} alt= {cat}/><CategoryLabel label={cat}/></GridItem>
-          }
-
-          if (key == categories.length - 1) {
-            return <GridItem display="flex" alignItems="center" justifyContent="center" position="relative" colSpan={2} w='100%' h='100%' bg='yellow.500' key={key}><Image src={imageUrl} fill={true} alt= {cat}/><CategoryLabel label={cat}/></GridItem>
-          }
-          return <GridItem display="flex" alignItems="center" justifyContent="center" position="relative" w='100%' h='100%' bg='blue.500' key={key}><Image src={imageUrl} fill={true} alt= {cat} /><CategoryLabel label={cat}/></GridItem>
-        })}
-        </Grid>
-
-        {/* <ol>
-        {products.map(product => {
-          return <li key={product.id}>{product.title}</li>
-        })}
-        </ol> */}
       </main>
     </>
-  )
+  );
 }
 // This happen in the server side.
-export async function getServerSideProps(contex: GetServerSidePropsContext){
-  const products = await fetch('https://fakestoreapi.com/products')
-    .then(res=>res.json())
-  
-  const categories = await fetch('https://fakestoreapi.com/products/categories')
-    .then(res=>res.json())
-            
-  return{
+export async function getServerSideProps(contex: GetServerSidePropsContext) {
+  const products = await fetch("https://fakestoreapi.com/products").then(
+    (res) => res.json()
+  );
+
+  const categories = await fetch(
+    "https://fakestoreapi.com/products/categories"
+  ).then((res) => res.json());
+
+  return {
     props: {
       products,
-      categories
-    }
-  }
+      categories,
+    },
+  };
 }
