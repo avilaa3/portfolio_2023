@@ -1,15 +1,15 @@
 //Next Js
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
-import Image from "next/image";
 //Chakra
-
+import { Box, Container } from "@chakra-ui/react";
 //Components
 import { Header } from "@/components/Headers";
 import { TopBar } from "@/components/Topbar";
 
 import { HomeHeroCategories } from "@/components/HomeHeroCategories";
 import { Categories } from "@/models/Categories";
+
 //Utilities
 
 
@@ -44,11 +44,13 @@ export default function Home({ products, categories }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <TopBar />
-        <Header />
-
+        <TopBar/>
+        <Box marginBottom="2rem">
+        <Header/>
+        </Box>
+        <Container size="lg">
         <HomeHeroCategories categories={categories}></HomeHeroCategories>
-
+        </Container>
       </main>
     </>
   );

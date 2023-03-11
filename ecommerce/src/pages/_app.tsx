@@ -6,6 +6,15 @@ import { extendTheme } from '@chakra-ui/react'
 
 import { defineStyleConfig } from '@chakra-ui/react'
 
+const sizes = {
+  lg: defineStyle({
+    maxW: '1110px',
+    padding: 0
+  }),
+}
+
+export const containerTheme = defineStyleConfig({ sizes })
+
 
 export const buttonTheme = defineStyleConfig({
   baseStyle: {
@@ -42,7 +51,8 @@ const theme = extendTheme({
     body: `'Spartan', sans-serif`,
   },
   components:{
-    Button: buttonTheme
+    Button: buttonTheme,
+    Container: containerTheme
   }
 })
 

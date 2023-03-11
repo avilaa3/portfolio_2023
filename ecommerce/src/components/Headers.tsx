@@ -1,11 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Flex } from '@chakra-ui/react'
+import { Flex, Container } from '@chakra-ui/react';
 import { Box } from '@chakra-ui/react'
 
 
  export function Header() {
-    return (<Flex w="100%" as="header" justifyContent="space-between" alignItems="center" border="solid 2px" borderColor="gray.100">
+    return (<Box w="100%" as="header" borderBottom="solid 2px" borderColor="gray.100">
+      <Container as={Flex} justifyContent="space-between" alignItems="center" size="lg">
      <Box margin="1rem 0">
        <Image src="/logo.svg" alt="" width={100} height={48} />
      </Box>
@@ -37,5 +38,6 @@ import { Box } from '@chakra-ui/react'
          </li>
        </Flex>
      </div>
-   </Flex>);
+     </Container>
+   </Box>);
  }
