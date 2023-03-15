@@ -8,9 +8,17 @@ import { TopBar } from "@/components/Topbar";
 import { HomeHeroCategories } from "@/components/HomeHeroCategories";
 import { Categories } from "@/models/Categories";
 
-import { Box, Container, Flex, Text, Grid, GridItem, AspectRatio } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Flex,
+  Text,
+  Grid,
+  GridItem,
+  AspectRatio,
+} from "@chakra-ui/react";
 import { AdvantageItem } from "@/components/AdvantageItem";
-import { AdvantageSection } from '../components/AdvantageSection';
+import { AdvantageSection } from "../components/AdvantageSection";
 
 //Utilities
 
@@ -51,25 +59,36 @@ export default function Home({ products, categories }: Props) {
       <main>
         <Container size="lg">
           <HomeHeroCategories categories={categories}></HomeHeroCategories>
-          <AdvantageSection/>
+          <AdvantageSection />
         </Container>
 
-        <Box margin="2rem auto" width="255px" border="solid 1px" borderColor="gray.200">
+        <Box
+          margin="2rem auto"
+          width="255px"
+          border="solid 1px"
+          borderColor="gray.200"
+        >
           <AspectRatio position="relative" ratio="1" maxWidth="100%">
-          <Image src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt="" fill="true" style={{ objectFit: "contain" }}></Image>
+            <Image
+              src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+              alt=""
+              fill="true"
+              style={{ objectFit: "contain" }}
+            ></Image>
           </AspectRatio>
           <Text>Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</Text>
           <Text>$ 38.00</Text>
         </Box>
 
-
-
-      <ol>
-          {products.map(product => {
-            return <li key={product.id}><strong>{product.title}</strong></li>
+        <ol>
+          {products.map((product) => {
+            return (
+              <li key={product.id}>
+                <strong>{product.title}</strong>
+              </li>
+            );
           })}
         </ol>
-
       </main>
     </>
   );
