@@ -68,11 +68,11 @@ export default function Home({ products, categories }: Props) {
           border="solid 1px"
           borderColor="gray.200"
         >
-          <AspectRatio position="relative" ratio="1" maxWidth="100%">
+          <AspectRatio position="relative" ratio={1} maxWidth="100%">
             <Image
               src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
               alt=""
-              fill="true"
+              fill={true}
               style={{ objectFit: "contain" }}
             ></Image>
           </AspectRatio>
