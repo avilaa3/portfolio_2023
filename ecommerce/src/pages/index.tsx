@@ -7,7 +7,7 @@ import { TopBar } from "@/components/Topbar";
 import { HomeHeroCategories } from "@/components/HomeHeroCategories";
 import { Categories } from "@/models/Categories";
 
-import { Box, Container, SimpleGrid } from "@chakra-ui/react";
+import { Box, Container, Grid, SimpleGrid } from "@chakra-ui/react";
 import { AdvantageSection } from "../components/AdvantageSection";
 import { ProductCard } from "@/components/ProductCard";
 
@@ -56,22 +56,47 @@ export default function Home({ products, categories }: Props) {
           <HomeHeroCategories categories={categories}></HomeHeroCategories>
           <AdvantageSection />
         </Container>
-        <SimpleGrid
-            minChildWidth={{
-              lg: "255px",
-            }}
+
+        <Container
+          maxW={{
+            base: '100%',
+            md: '1110px',
+          }}
+          padding = '0'
+        >
+          <Grid
             overflowX={"scroll"}
-            gridTemplateColumns="repeat(auto-fit, 255px)"
-            gridAutoFlow={"column"}
+            gridTemplateColumns={{
+              base: "repeat(auto-fit, 255px)",
+              md: "repeat(auto-fit, minmax(255px, 1fr))",
+            }}
+            gridAutoFlow={{
+              base: "column",
+              md: "row",
+            }}
             gridAutoColumns={"255px"}
-            spacing="1.85rem"
+            gap={"1.85rem"}
             scrollSnapType={"x mandatory"}
-            >
-            
-            {products.map((product) => {
-              return <Box key={product.id} scrollSnapAlign="center"><ProductCard {...product} /></Box>;
+          >
+            {products.map((product, i) => {
+              return (
+                <Box
+                  marginLeft={{
+                    base: i === 0 ? '1rem' : '0',
+                    md: '0',
+                  }}
+                  key={product.id}
+                  scrollSnapAlign="center"
+                  border="solid 1px"
+                  borderColor={"gray.200"}
+                  padding={"1rem"}
+                >
+                  <ProductCard {...product} />
+                </Box>
+              );
             })}
-          </SimpleGrid>
+          </Grid>
+        </Container>
       </main>
     </>
   );
