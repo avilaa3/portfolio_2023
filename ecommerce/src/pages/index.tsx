@@ -10,6 +10,11 @@ import { Categories } from "@/models/Categories";
 import { Box, Container, Grid, SimpleGrid } from "@chakra-ui/react";
 import { AdvantageSection } from "../components/AdvantageSection";
 import { ProductCard } from "@/components/ProductCard";
+import {
+  GroupedProducts,
+  groupProductsByCategory,
+} from "@/utils/groupProductsByCategory";
+import { HomeProductsGrid } from "@/components/HomeProductsGrid";
 
 //Utilities
 
@@ -29,6 +34,7 @@ export type Product = {
 type Props = {
   products: Product[];
   categories: Categories[];
+  productsGroupedByCategory: GroupedProducts;
 };
 
 // this is executhe in the client side
@@ -59,43 +65,12 @@ export default function Home({ products, categories }: Props) {
 
         <Container
           maxW={{
-            base: '100%',
-            md: '1110px',
+            base: "100%",
+            md: "1110px",
           }}
-          padding = '0'
+          padding="0"
         >
-          <Grid
-            overflowX={"scroll"}
-            gridTemplateColumns={{
-              base: "repeat(auto-fit, 255px)",
-              md: "repeat(auto-fit, minmax(255px, 1fr))",
-            }}
-            gridAutoFlow={{
-              base: "column",
-              md: "row",
-            }}
-            gridAutoColumns={"255px"}
-            gap={"1.85rem"}
-            scrollSnapType={"x mandatory"}
-          >
-            {products.map((product, i) => {
-              return (
-                <Box
-                  marginLeft={{
-                    base: i === 0 ? '1rem' : '0',
-                    md: '0',
-                  }}
-                  key={product.id}
-                  scrollSnapAlign="center"
-                  border="solid 1px"
-                  borderColor={"gray.200"}
-                  padding={"1rem"}
-                >
-                  <ProductCard {...product} />
-                </Box>
-              );
-            })}
-          </Grid>
+          <HomeProductsGrid products={products}></HomeProductsGrid>
         </Container>
       </main>
     </>
@@ -111,10 +86,13 @@ export async function getServerSideProps(contex: GetServerSidePropsContext) {
     "https://fakestoreapi.com/products/categories"
   ).then((res) => res.json());
 
+  const productsGroupedByCategory = groupProductsByCategory(products);
+
   return {
     props: {
       products,
       categories,
+      productsGroupedByCategory,
     },
   };
 }

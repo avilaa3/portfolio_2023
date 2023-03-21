@@ -1,7 +1,6 @@
 import { Product } from '@/pages';
-import { type } from 'os';
 
-type GroupedProducts = {
+export type GroupedProducts = {
 [key: string]: Product[];
 };
 
