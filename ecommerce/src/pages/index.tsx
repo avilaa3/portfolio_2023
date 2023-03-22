@@ -1,5 +1,6 @@
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
+import Image from "next/image";
 //Components
 import { Header } from "@/components/Headers";
 import { TopBar } from "@/components/Topbar";
@@ -7,14 +8,15 @@ import { TopBar } from "@/components/Topbar";
 import { HomeHeroCategories } from "@/components/HomeHeroCategories";
 import { Categories } from "@/models/Categories";
 
-import { Box, Container, Grid, Heading, SimpleGrid } from "@chakra-ui/react";
+import { Box, Container, Heading, SimpleGrid } from "@chakra-ui/react";
 import { AdvantageSection } from "../components/AdvantageSection";
-import { ProductCard } from "@/components/ProductCard";
 import {
   GroupedProducts,
   groupProductsByCategory,
 } from "@/utils/groupProductsByCategory";
 import { HomeProductsGrid } from "@/components/HomeProductsGrid";
+import banner1 from "/public/banner-new-season.jpg";
+import banner2 from "/public/banner-sale.jpg";
 
 //Utilities
 
@@ -94,6 +96,23 @@ export default function Home({
               );
             }
           )}
+        </Container>
+
+        <Container
+          size={{
+            lg: "lg",
+          }}
+        >
+          <SimpleGrid
+            minChildWidth="255px"
+            spacing={{
+              base: "1rem",
+              md: "2rem",
+            }}
+          >
+            <Image src={banner1} alt=""></Image>
+            <Image src={banner2} alt=""></Image>
+          </SimpleGrid>
         </Container>
       </main>
     </>
