@@ -7,7 +7,7 @@ import { TopBar } from "@/components/Topbar";
 import { HomeHeroCategories } from "@/components/HomeHeroCategories";
 import { Categories } from "@/models/Categories";
 
-import { Box, Container, Grid, SimpleGrid } from "@chakra-ui/react";
+import { Box, Container, Grid, Heading, SimpleGrid } from "@chakra-ui/react";
 import { AdvantageSection } from "../components/AdvantageSection";
 import { ProductCard } from "@/components/ProductCard";
 import {
@@ -39,7 +39,11 @@ type Props = {
 
 // this is executhe in the client side
 
-export default function Home({ products, categories }: Props) {
+export default function Home({
+  products,
+  categories,
+  productsGroupedByCategory,
+}: Props) {
   return (
     <>
       <Head>
@@ -70,7 +74,26 @@ export default function Home({ products, categories }: Props) {
           }}
           padding="0"
         >
-          <HomeProductsGrid products={products}></HomeProductsGrid>
+          {Object.entries(productsGroupedByCategory).map(
+            ([category, products]) => {
+              return (
+                <Box key={category} marginBottom="4rem">
+                  <Heading
+                    as="h2"
+                    size="md"
+                    textTransform="uppercase"
+                    margin={{
+                      base: "0 0 1rem 1rem",
+                      md: "0 0 1.5rem 0",
+                    }}
+                  >
+                    {category}
+                  </Heading>
+                  <HomeProductsGrid products={products} />
+                </Box>
+              );
+            }
+          )}
         </Container>
       </main>
     </>
