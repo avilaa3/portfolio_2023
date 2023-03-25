@@ -18,6 +18,7 @@ import { HomeProductsGrid } from "@/components/HomeProductsGrid";
 import banner1 from "/public/banner-new-season.jpg";
 import banner2 from "/public/banner-sale.jpg";
 import { CentralLabel } from "@/components/CenterLabel";
+import { Promobanner } from "@/components/PromoBanner";
 
 //Utilities
 
@@ -111,48 +112,26 @@ export default function Home({
               md: "2rem",
             }}
           >
-            <Box position={"relative"}>
-              <Image src={banner1} alt=""></Image>
-              <Box
-                position={"absolute"}
-                left="50%"
-                top="50%"
-                transform="translate(-50%, -50%)"
-                bg={"white"}
-              >
-                <CentralLabel>
-                  <Text fontSize="sm" color={"gray.500"}>
-                    New Season
-                  </Text>
-                  <Text fontSize="lg" whiteSpace="nowrap">
-                    LookBook Collection
-                  </Text>
-                </CentralLabel>
-              </Box>
-            </Box>
+            <Promobanner image={banner1}>
+              <Text fontSize="sm" color={"gray.500"}>
+                New Season
+              </Text>
+              <Text fontSize="lg" whiteSpace="nowrap">
+                LookBook Collection
+              </Text>
+            </Promobanner>
 
-            <Box position={"relative"}>
-              <Image src={banner2} alt=""></Image>
-              <Box
-                position={"absolute"}
-                left="50%"
-                top="50%"
-                transform="translate(-50%, -50%)"
-                bg={"white"}
-              >
-                <CentralLabel>
-                  <Text fontSize="sm" color={"gray.500"}>
-                    Sale
-                  </Text>
-                  <Text fontSize="lg" whiteSpace="nowrap">
-                    Get Up to{" "}
-                    <Text as="span" color={"red"}>
-                      50% off
-                    </Text>
-                  </Text>
-                </CentralLabel>
-              </Box>
-            </Box>
+            <Promobanner image={banner2}>
+              <Text fontSize="sm" color={"gray.500"}>
+                Sale
+              </Text>
+              <Text fontSize="lg" whiteSpace="nowrap">
+                get up to{" "}
+                <Text as="span" color={"red"}>
+                  50% off
+                </Text>
+              </Text>
+            </Promobanner>
           </SimpleGrid>
         </Container>
       </main>
