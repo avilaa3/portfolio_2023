@@ -8,7 +8,7 @@ import { TopBar } from "@/components/Topbar";
 import { HomeHeroCategories } from "@/components/HomeHeroCategories";
 import { Categories } from "@/models/Categories";
 
-import { Box, Container, Heading, SimpleGrid } from "@chakra-ui/react";
+import { Box, Container, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 import { AdvantageSection } from "../components/AdvantageSection";
 import {
   GroupedProducts,
@@ -17,6 +17,7 @@ import {
 import { HomeProductsGrid } from "@/components/HomeProductsGrid";
 import banner1 from "/public/banner-new-season.jpg";
 import banner2 from "/public/banner-sale.jpg";
+import { CentralLabel } from "@/components/CenterLabel";
 
 //Utilities
 
@@ -104,14 +105,54 @@ export default function Home({
           }}
         >
           <SimpleGrid
-            minChildWidth="255px"
+            minChildWidth="320px"
             spacing={{
               base: "1rem",
               md: "2rem",
             }}
           >
-            <Image src={banner1} alt=""></Image>
-            <Image src={banner2} alt=""></Image>
+            <Box position={"relative"}>
+              <Image src={banner1} alt=""></Image>
+              <Box
+                position={"absolute"}
+                left="50%"
+                top="50%"
+                transform="translate(-50%, -50%)"
+                bg={"white"}
+              >
+                <CentralLabel>
+                  <Text fontSize="sm" color={"gray.500"}>
+                    New Season
+                  </Text>
+                  <Text fontSize="lg" whiteSpace="nowrap">
+                    LookBook Collection
+                  </Text>
+                </CentralLabel>
+              </Box>
+            </Box>
+
+            <Box position={"relative"}>
+              <Image src={banner2} alt=""></Image>
+              <Box
+                position={"absolute"}
+                left="50%"
+                top="50%"
+                transform="translate(-50%, -50%)"
+                bg={"white"}
+              >
+                <CentralLabel>
+                  <Text fontSize="sm" color={"gray.500"}>
+                    Sale
+                  </Text>
+                  <Text fontSize="lg" whiteSpace="nowrap">
+                    Get Up to{" "}
+                    <Text as="span" color={"red"}>
+                      50% off
+                    </Text>
+                  </Text>
+                </CentralLabel>
+              </Box>
+            </Box>
           </SimpleGrid>
         </Container>
       </main>
