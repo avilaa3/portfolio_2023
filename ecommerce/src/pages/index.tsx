@@ -74,22 +74,12 @@ export default function Home({
         <Header />
       </Box>
       <main>
-        <Container
-          size={{
-            lg: "lg",
-          }}
-        >
+        <Container>
           <HomeHeroCategories categories={categories}></HomeHeroCategories>
           <AdvantageSection />
         </Container>
 
-        <Container
-          maxW={{
-            base: "100%",
-            md: "1110px",
-          }}
-          padding="0"
-        >
+        <Container padding="0">
           {Object.entries(productsGroupedByCategory).map(
             ([category, products]) => {
               return (
@@ -112,11 +102,7 @@ export default function Home({
           )}
         </Container>
 
-        <Container
-          size={{
-            lg: "lg",
-          }}
-        >
+        <Container>
           <SimpleGrid
             minChildWidth="320px"
             spacing={{
