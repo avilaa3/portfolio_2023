@@ -8,7 +8,18 @@ import { TopBar } from "@/components/Topbar";
 import { HomeHeroCategories } from "@/components/HomeHeroCategories";
 import { Categories } from "@/models/Categories";
 
-import { Box, Container, Heading, SimpleGrid, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Container,
+  FormControl,
+  FormHelperText,
+  FormLabel,
+  Heading,
+  Input,
+  SimpleGrid,
+  Text,
+} from "@chakra-ui/react";
 import { AdvantageSection } from "../components/AdvantageSection";
 import {
   GroupedProducts,
@@ -19,6 +30,7 @@ import banner1 from "/public/banner-new-season.jpg";
 import banner2 from "/public/banner-sale.jpg";
 import { CentralLabel } from "@/components/CenterLabel";
 import { Promobanner } from "@/components/PromoBanner";
+import { Grid } from "@chakra-ui/react";
 
 //Utilities
 
@@ -133,6 +145,55 @@ export default function Home({
               </Text>
             </Promobanner>
           </SimpleGrid>
+        </Container>
+        <Container
+          background={" linear-gradient(180deg, #F3F2F2 0%, #DCDBDB 100%); "}
+          m={"2rem auto"}
+          p={"1.5rem"}
+          maxW={"100%"}
+        >
+          <Box
+            m={"auto"}
+            maxW={"33rem"}
+            as="article"
+            bgColor={"white"}
+            p={"2rem"}
+          >
+            <Grid maxW={"22rem"} textAlign={"center"} m="auto" gap={"2rem"}>
+              <header>
+                <Heading size={"sm"} textTransform={"uppercase"} color={"gray"}>
+                  Special Offer
+                </Heading>
+                <Heading size={"xl"} textTransform={"uppercase"}>
+                  Subscribe and{" "}
+                  <Text as="span" color={"red"}>
+                    get 10% off
+                  </Text>
+                </Heading>
+              </header>
+              <Grid as="form" action="" gap={"1.5rem"}>
+                <FormControl>
+                  <Input
+                    height={"4rem"}
+                    textAlign={"inherit"}
+                    borderRadius={"0"}
+                    type="email"
+                    placeholder={"Enter your e-mail"}
+                    backgroundColor={"gray.100"}
+                  />
+                </FormControl>
+                <Button
+                  bgColor={"black"}
+                  height={"4rem"}
+                  width={"100%"}
+                  textTransform={"uppercase"}
+                  size={"lg"}
+                >
+                  Subscribe
+                </Button>
+              </Grid>
+            </Grid>
+          </Box>
         </Container>
       </main>
     </>
