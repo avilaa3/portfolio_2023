@@ -1,6 +1,5 @@
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
-import Image from "next/image";
 //Components
 import { Header } from "@/components/Headers";
 import { TopBar } from "@/components/Topbar";
@@ -13,8 +12,6 @@ import {
   Button,
   Container,
   FormControl,
-  FormHelperText,
-  FormLabel,
   Heading,
   Input,
   SimpleGrid,
@@ -28,7 +25,6 @@ import {
 import { HomeProductsGrid } from "@/components/HomeProductsGrid";
 import banner1 from "/public/banner-new-season.jpg";
 import banner2 from "/public/banner-sale.jpg";
-import { CentralLabel } from "@/components/CenterLabel";
 import { Promobanner } from "@/components/PromoBanner";
 import { Grid } from "@chakra-ui/react";
 

@@ -8,12 +8,40 @@ import { defineStyleConfig } from "@chakra-ui/react";
 
 export const buttonTheme = defineStyleConfig({
   baseStyle: {
-    fontWeight: "bold",
+    fontWeight: "normal",
     textTransform: "uppercase",
     borderRadius: "none",
+    paddingX: "1.5rem",
+    _hover: {
+      bg: "brand.800",
+    },
+  },
+  sizes: {
+    sm: {
+      fontSize: "0.75rem",
+    },
+    md: {
+      fontSize: "0.8125rem",
+    },
+    lg: {
+      fontSize: "0.8125rem",
+    },
+    xl: {
+      fontSize: "1rem",
+      height: "4rem",
+      paddingX: "3rem",
+    },
   },
   defaultProps: {
-    colorScheme: "brand",
+    variant: "primary",
+    size: "md",
+  },
+
+  variants: {
+    primary: {
+      bg: "brand.900",
+      color: "white",
+    },
   },
 });
 
