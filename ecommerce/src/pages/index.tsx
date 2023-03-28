@@ -1,12 +1,20 @@
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
+import Image from "next/image";
+
 //Components
 import { Header } from "@/components/Headers";
 import { TopBar } from "@/components/Topbar";
-
 import { HomeHeroCategories } from "@/components/HomeHeroCategories";
+import { AdvantageSection } from "../components/AdvantageSection";
+import { HomeProductsGrid } from "@/components/HomeProductsGrid";
+import { Promobanner } from "@/components/PromoBanner";
+
+//Models
+
 import { Categories } from "@/models/Categories";
 
+//CHakra UI
 import {
   Box,
   Button,
@@ -16,19 +24,20 @@ import {
   Input,
   SimpleGrid,
   Text,
+  Grid,
 } from "@chakra-ui/react";
-import { AdvantageSection } from "../components/AdvantageSection";
+
+//Images
+import banner1 from "/public/banner-new-season.jpg";
+import banner2 from "/public/banner-sale.jpg";
+import WomanStanding from "/public/woman-standing.png";
+import MenWalking from "/public/men-walking.png";
+
+//Utilities
 import {
   GroupedProducts,
   groupProductsByCategory,
 } from "@/utils/groupProductsByCategory";
-import { HomeProductsGrid } from "@/components/HomeProductsGrid";
-import banner1 from "/public/banner-new-season.jpg";
-import banner2 from "/public/banner-sale.jpg";
-import { Promobanner } from "@/components/PromoBanner";
-import { Grid } from "@chakra-ui/react";
-
-//Utilities
 
 export type Product = {
   id: number;
@@ -133,7 +142,35 @@ export default function Home({
           m={"2rem auto"}
           p={"1.5rem"}
           maxW={"100%"}
+          position={"relative"}
         >
+          <Box
+            position={"absolute"}
+            w={{
+              base: "128px",
+              md: "311px",
+            }}
+            h={{
+              base: "242px",
+              md: "524px",
+            }}
+          >
+            <Image src={WomanStanding} alt="" fill={true} />
+          </Box>
+          <Box
+            position={"absolute"}
+            w={{
+              base: "99px",
+              md: "219px",
+            }}
+            h={{
+              base: "242px",
+              md: "524px",
+            }}
+          >
+            <Image src={MenWalking} alt="" />
+          </Box>
+
           <Box
             m={"auto"}
             maxW={"33rem"}
