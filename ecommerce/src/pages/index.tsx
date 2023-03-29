@@ -25,6 +25,7 @@ import {
   SimpleGrid,
   Text,
   Grid,
+  Flex,
 } from "@chakra-ui/react";
 
 //Images
@@ -138,9 +139,15 @@ export default function Home({
           </SimpleGrid>
         </Container>
         <Container
-          background={" linear-gradient(180deg, #F3F2F2 0%, #DCDBDB 100%); "}
-          m={"2rem auto"}
-          p={"1.5rem"}
+          background={"linear-gradient(180deg, #F3F2F2 0%, #DCDBDB 100%); "}
+          m={{
+            base: "14.75rem 0 0 ",
+            md: "2rem auto",
+          }}
+          p={{
+            base: "1.5rem",
+            md: "3.55rem",
+          }}
           maxW={"100%"}
           position={"relative"}
         >
@@ -152,10 +159,29 @@ export default function Home({
             }}
             h={{
               base: "242px",
-              md: "524px",
+              md: "545px",
+            }}
+            left={{
+              base: "1.5rem",
+              md: "50%",
+            }}
+            top={{
+              base: `calc(-242px + 1.5rem)`,
+              md: "initial",
+            }}
+            bottom={{
+              md: "0",
+            }}
+            transform={{
+              md: "translateX(-530px)",
             }}
           >
-            <Image src={WomanStanding} alt="" fill={true} />
+            <Image
+              src={WomanStanding}
+              alt=""
+              fill={true}
+              style={{ objectFit: "cover" }}
+            />
           </Box>
           <Box
             position={"absolute"}
@@ -164,14 +190,36 @@ export default function Home({
               md: "219px",
             }}
             h={{
-              base: "242px",
+              base: "236px",
               md: "524px",
             }}
+            top={{
+              base: `calc(-236px + 1.5rem)`,
+              md: "initial",
+            }}
+            bottom={{
+              md: "0",
+            }}
+            right={{
+              base: "2rem",
+              md: "50%",
+            }}
+            transform={{
+              md: "translateX(470px)",
+            }}
           >
-            <Image src={MenWalking} alt="" />
+            <Image
+              src={MenWalking}
+              alt=""
+              fill={true}
+              style={{ objectFit: "cover" }}
+            />
           </Box>
 
-          <Box
+          <Flex
+            height={{
+              md: "28.75rem",
+            }}
             m={"auto"}
             maxW={"33rem"}
             as="article"
@@ -212,7 +260,7 @@ export default function Home({
                 </Button>
               </Grid>
             </Grid>
-          </Box>
+          </Flex>
         </Container>
       </main>
     </>
