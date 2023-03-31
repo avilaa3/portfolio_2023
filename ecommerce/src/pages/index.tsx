@@ -31,14 +31,17 @@ import {
 //Images
 import banner1 from "/public/banner-new-season.jpg";
 import banner2 from "/public/banner-sale.jpg";
-import WomanStanding from "/public/woman-standing.png";
-import MenWalking from "/public/men-walking.png";
+import blogPic1 from "/public/blog-pic-01.jpg";
+import blogPic2 from "/public/blog-pic-02.jpg";
+import blogPic3 from "/public/blog-pic-03.jpg";
 
 //Utilities
 import {
   GroupedProducts,
   groupProductsByCategory,
 } from "@/utils/groupProductsByCategory";
+import { SubscribeSection } from "@/components/SubscribeSection";
+import { BlogPostCard } from "../components/BlogPostCard";
 
 export type Product = {
   id: number;
@@ -54,7 +57,6 @@ export type Product = {
 };
 
 type Props = {
-  products: Product[];
   categories: Categories[];
   productsGroupedByCategory: GroupedProducts;
 };
@@ -62,7 +64,6 @@ type Props = {
 // this is executhe in the client side
 
 export default function Home({
-  products,
   categories,
   productsGroupedByCategory,
 }: Props) {
@@ -139,128 +140,51 @@ export default function Home({
           </SimpleGrid>
         </Container>
         <Container
-          background={"linear-gradient(180deg, #F3F2F2 0%, #DCDBDB 100%); "}
+          p={"0"}
+          maxW="100%"
           m={{
-            base: "14.75rem 0 0 ",
-            md: "2rem auto",
+            base: "14.75rem 0 4rem",
+            md: "2rem auto 6rem",
           }}
-          p={{
-            base: "1.5rem",
-            md: "3.55rem",
-          }}
-          maxW={"100%"}
-          position={"relative"}
         >
-          <Box
-            position={"absolute"}
-            w={{
-              base: "128px",
-              md: "311px",
-            }}
-            h={{
-              base: "242px",
-              md: "545px",
-            }}
-            left={{
-              base: "1.5rem",
-              md: "50%",
-            }}
-            top={{
-              base: `calc(-242px + 1.5rem)`,
-              md: "initial",
-            }}
-            bottom={{
-              md: "0",
-            }}
-            transform={{
-              md: "translateX(-530px)",
-            }}
-          >
-            <Image
-              src={WomanStanding}
-              alt=""
-              fill={true}
-              style={{ objectFit: "cover" }}
-            />
-          </Box>
-          <Box
-            position={"absolute"}
-            w={{
-              base: "99px",
-              md: "219px",
-            }}
-            h={{
-              base: "236px",
-              md: "524px",
-            }}
-            top={{
-              base: `calc(-236px + 1.5rem)`,
-              md: "initial",
-            }}
-            bottom={{
-              md: "0",
-            }}
-            right={{
+          <SubscribeSection />
+        </Container>
+        <Container>
+          <Heading
+            as="h2"
+            fontSize="2x1"
+            textTransform="uppercase"
+            mb={{
               base: "2rem",
-              md: "50%",
+              md: "3rem",
             }}
-            transform={{
-              md: "translateX(470px)",
+            textAlign="center"
+          >
+            Lates From Blogpost
+          </Heading>
+          <SimpleGrid
+            minChildWidth="300px"
+            spacing={{
+              base: "2.5rem",
+              md: "1.5rem",
             }}
           >
-            <Image
-              src={MenWalking}
-              alt=""
-              fill={true}
-              style={{ objectFit: "cover" }}
+            <BlogPostCard
+              image={blogPic1}
+              title="The Easiest Way to Break"
+              summary="But I must explain to you how all this mistaken idea of denouncing pleas and praising pain was bor"
             />
-          </Box>
-
-          <Flex
-            height={{
-              md: "28.75rem",
-            }}
-            m={"auto"}
-            maxW={"33rem"}
-            as="article"
-            bgColor={"white"}
-            p={"2rem"}
-          >
-            <Grid maxW={"22rem"} textAlign={"center"} m="auto" gap={"2rem"}>
-              <header>
-                <Heading size={"sm"} textTransform={"uppercase"} color={"gray"}>
-                  Special Offer
-                </Heading>
-                <Heading size={"xl"} textTransform={"uppercase"}>
-                  Subscribe and{" "}
-                  <Text as="span" color={"red"}>
-                    get 10% off
-                  </Text>
-                </Heading>
-              </header>
-              <Grid as="form" action="" gap={"1.5rem"}>
-                <FormControl>
-                  <Input
-                    height={"4rem"}
-                    textAlign={"inherit"}
-                    borderRadius={"0"}
-                    type="email"
-                    placeholder={"Enter your e-mail"}
-                    backgroundColor={"gray.100"}
-                  />
-                </FormControl>
-                <Button
-                  bgColor={"black"}
-                  height={"4rem"}
-                  width={"100%"}
-                  textTransform={"uppercase"}
-                  size={"lg"}
-                >
-                  Subscribe
-                </Button>
-              </Grid>
-            </Grid>
-          </Flex>
+            <BlogPostCard
+              image={blogPic2}
+              title="Wedding Season"
+              summary="But I must explain to you how all this mistaken idea of denouncing pleas and praising pain was bor"
+            />
+            <BlogPostCard
+              image={blogPic3}
+              title="Recent Favorites On Repeat"
+              summary="But I must explain to you how all this mistaken idea of denouncing pleas and praising pain was bor"
+            />
+          </SimpleGrid>
         </Container>
       </main>
     </>
@@ -280,7 +204,6 @@ export async function getServerSideProps(contex: GetServerSidePropsContext) {
 
   return {
     props: {
-      products,
       categories,
       productsGroupedByCategory,
     },
