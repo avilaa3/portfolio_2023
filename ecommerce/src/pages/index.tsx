@@ -1,6 +1,5 @@
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
-import Image from "next/image";
 
 //Components
 import { Header } from "@/components/Headers";
@@ -17,15 +16,10 @@ import { Categories } from "@/models/Categories";
 //CHakra UI
 import {
   Box,
-  Button,
   Container,
-  FormControl,
   Heading,
-  Input,
   SimpleGrid,
   Text,
-  Grid,
-  Flex,
 } from "@chakra-ui/react";
 
 //Images
