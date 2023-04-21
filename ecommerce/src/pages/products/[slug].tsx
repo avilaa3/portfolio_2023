@@ -1,22 +1,84 @@
 import { slugify } from "@/utils/sluglyfile";
 import { Product as ProductModel } from "..";
-import { AspectRatio, Button } from "@chakra-ui/react";
+import {
+  AspectRatio,
+  Button,
+  Box,
+  Container,
+  Flex,
+  Link,
+  Heading,
+  Text,
+  UnorderedList,
+  ListItem,
+  ListIcon,
+} from "@chakra-ui/react";
+import { ChevronRightIcon } from "@chakra-ui/icons";
 import Image from "next/image";
+import { Rating } from "@/components/Rating";
+import { ShareIcon } from "@/icons/Share";
 
 type Props = {
   product: ProductModel;
 };
 
 export default function Product({
-  product: { title, price, image, rating, category, description },
+  product: { id, title, price, image, rating, category, description },
 }: Props) {
   return (
     <>
-      <h1>{title}</h1>
+      <Box bg="gray.100" paddingY="2rem" paddingX="1rem">
+        <Container>
+          <Flex alignItems={"center"} justifyContent={"space-between"}>
+            <Flex
+              fontSize={"sm"}
+              as={UnorderedList}
+              gap={"2"}
+              listStyleType={"none"}
+              m={"0"}
+            >
+              <ListItem textTransform={"capitalize"}>
+                <Link href="/">Home</Link>
+                <ListIcon w={18} h={18} as={ChevronRightIcon} color={"gray.700"} ml={'2'} mr={'0'}/>
+              </ListItem>
+              <ListItem textTransform={"capitalize"}>
+                <Link href={`${category}`}>{category}</Link>
+                <ListIcon w={18} h={18} as={ChevronRightIcon} color={"gray.700"} ml={'2'} mr={'0'} />
+              </ListItem>
+              <ListItem textTransform={"capitalize"}>{title}</ListItem>
+            </Flex>
+
+            <Button
+              color={"gray"}
+              variant={"ghost"}
+              leftIcon={<ShareIcon w={18} h={18} />}
+            >
+              Share
+            </Button>
+          </Flex>
+          <Heading textAlign={"center"} as="h1" fontSize={"2xl"} my={"1.5rem"}>
+            {title}
+          </Heading>
+          <Flex alignItems={"center"} justifyContent={"space-between"}>
+            <Flex gap={"1rem"} alignItems={"baseline"}>
+              <Rating rate={rating.rate} />
+              <Text>{rating.count} reviews</Text>
+            </Flex>
+
+            <Flex gap={"1rem"} fontSize={"sm"}>
+              <p>
+                SKU: <b>{id}</b>
+              </p>
+              <p>
+                Availability: <b>In Stock</b>
+              </p>
+            </Flex>
+          </Flex>
+        </Container>
+      </Box>
+
       <p>{price}</p>
-      <p>
-        {rating.count}, {rating.rate}
-      </p>
+
       <p>{category}</p>
       <p>{description}</p>
       <Button>Add to cart</Button>
@@ -39,7 +101,6 @@ export default function Product({
   );
 }
 
-// Generates `/products/1` and `/products/2`
 export async function getStaticPaths() {
   const products = await fetch("https://fakestoreapi.com/products").then(
     (res) => res.json()
@@ -49,9 +110,8 @@ export async function getStaticPaths() {
   });
 
   return {
-    //paths: [{ params: { slug: "1" } }, { params: { slug: "2" } }],
     paths: slugs.map((slug) => ({ params: { slug } })),
-    fallback: false, // can also be true or 'blocking'
+    fallback: false,
   };
 }
 

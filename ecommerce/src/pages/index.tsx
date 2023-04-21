@@ -2,8 +2,6 @@ import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
 
 //Components
-import { Header } from "@/components/Headers";
-import { TopBar } from "@/components/Topbar";
 import { HomeHeroCategories } from "@/components/HomeHeroCategories";
 import { AdvantageSection } from "../components/AdvantageSection";
 import { HomeProductsGrid } from "@/components/HomeProductsGrid";
@@ -69,11 +67,6 @@ export default function Home({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <TopBar />
-      <Box marginBottom="2rem">
-        <Header />
-      </Box>
       <main>
         <Container>
           <HomeHeroCategories categories={categories}></HomeHeroCategories>

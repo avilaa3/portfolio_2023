@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app";
 
-import { ChakraProvider } from "@chakra-ui/react";
+import { Box, ChakraProvider } from "@chakra-ui/react";
 
 import { extendTheme } from "@chakra-ui/react";
 
@@ -47,6 +47,8 @@ export const buttonTheme = defineStyleConfig({
 
 import "@fontsource/spartan/400.css";
 import "@fontsource/spartan/700.css";
+import { TopBar } from "@/components/Topbar";
+import { Header } from "@/components/Headers";
 
 const theme = extendTheme({
   colors: {
@@ -79,6 +81,10 @@ const theme = extendTheme({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
+      <TopBar/>
+      <Box>
+        <Header />
+      </Box>
       <Component {...pageProps} />
     </ChakraProvider>
   );
