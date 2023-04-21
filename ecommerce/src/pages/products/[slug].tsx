@@ -1,102 +1,55 @@
 import { slugify } from "@/utils/sluglyfile";
 import { Product as ProductModel } from "..";
-import {
-  AspectRatio,
-  Button,
-  Box,
-  Container,
-  Flex,
-  Link,
-  Heading,
-  Text,
-  UnorderedList,
-  ListItem,
-  ListIcon,
-} from "@chakra-ui/react";
-import { ChevronRightIcon } from "@chakra-ui/icons";
+import { AspectRatio, Button, Grid, Box, Container, Heading, Text, Divider } from "@chakra-ui/react";
 import Image from "next/image";
-import { Rating } from "@/components/Rating";
-import { ShareIcon } from "@/icons/Share";
+import { PDPHeader } from "@/components/PDPHeader";
 
 type Props = {
   product: ProductModel;
 };
 
-export default function Product({
-  product: { id, title, price, image, rating, category, description },
-}: Props) {
+function Price({ price }: { price: number }) {
+  const currency = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(price);
+  return <p>{currency}</p>;
+}
+
+export default function Product({ product }: Props) {
+  const { title, price, category, description, image } = product;
   return (
     <>
-      <Box bg="gray.100" paddingY="2rem" paddingX="1rem">
-        <Container>
-          <Flex alignItems={"center"} justifyContent={"space-between"}>
-            <Flex
-              fontSize={"sm"}
-              as={UnorderedList}
-              gap={"2"}
-              listStyleType={"none"}
-              m={"0"}
-            >
-              <ListItem textTransform={"capitalize"}>
-                <Link href="/">Home</Link>
-                <ListIcon w={18} h={18} as={ChevronRightIcon} color={"gray.700"} ml={'2'} mr={'0'}/>
-              </ListItem>
-              <ListItem textTransform={"capitalize"}>
-                <Link href={`${category}`}>{category}</Link>
-                <ListIcon w={18} h={18} as={ChevronRightIcon} color={"gray.700"} ml={'2'} mr={'0'} />
-              </ListItem>
-              <ListItem textTransform={"capitalize"}>{title}</ListItem>
-            </Flex>
+      <PDPHeader product={product}></PDPHeader>
+      <Container as={Grid} gridTemplateColumns={"558px 1fr"}>
+        <AspectRatio
+          position="relative"
+          ratio={1}
+          maxWidth="100%"
+          marginBottom={"1rem"}
+        >
+          <Image
+            src={image}
+            alt=""
+            fill={true}
+            style={{
+              objectFit: "contain",
+            }}
+          ></Image>
+        </AspectRatio>
 
-            <Button
-              color={"gray"}
-              variant={"ghost"}
-              leftIcon={<ShareIcon w={18} h={18} />}
-            >
-              Share
-            </Button>
-          </Flex>
-          <Heading textAlign={"center"} as="h1" fontSize={"2xl"} my={"1.5rem"}>
-            {title}
-          </Heading>
-          <Flex alignItems={"center"} justifyContent={"space-between"}>
-            <Flex gap={"1rem"} alignItems={"baseline"}>
-              <Rating rate={rating.rate} />
-              <Text>{rating.count} reviews</Text>
-            </Flex>
+        <Box>
+          <Heading as="h3" textTransform={"uppercase"} fontSize="md" color="gray.500">Description</Heading>
+          <Text>{description}</Text>
+          <Divider />
+          <p>
+            <Price price={price} />
+          </p>
 
-            <Flex gap={"1rem"} fontSize={"sm"}>
-              <p>
-                SKU: <b>{id}</b>
-              </p>
-              <p>
-                Availability: <b>In Stock</b>
-              </p>
-            </Flex>
-          </Flex>
-        </Container>
-      </Box>
-
-      <p>{price}</p>
-
-      <p>{category}</p>
-      <p>{description}</p>
-      <Button>Add to cart</Button>
-      <AspectRatio
-        position="relative"
-        ratio={1}
-        maxWidth="100%"
-        marginBottom={"1rem"}
-      >
-        <Image
-          src={image}
-          alt=""
-          fill={true}
-          style={{
-            objectFit: "contain",
-          }}
-        ></Image>
-      </AspectRatio>
+          <p>{category}</p>
+          <Button>Add to cart</Button>
+        </Box>
+      </Container>
     </>
   );
 }
